@@ -1,8 +1,4 @@
----
-date: 2023-08-30
-author: Mikey Garcia, @gikeymarcia
-title: Tmux Configuration
----
+## Tmux Configuration
 
 Contains configuration and supporting scripts for `tmux`.
 
@@ -16,7 +12,7 @@ Contains configuration and supporting scripts for `tmux`.
 These commands will install this tmux configuration and the necessary plugins at `~/.config/tmux/`.
 
 ```bash
-git clone URL ~/.config/tmux
+git clone https://github.com/gikeymarcia/tmux-config.git ~/.config/tmux
 ~/.config/tmux/scripts/tmux-kickstart.sh
 
 # highly recommended add to your .bashrc/.zshrc
