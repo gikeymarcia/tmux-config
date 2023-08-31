@@ -11,7 +11,7 @@ sessions="$(tmux ls -F '#S#{?session_attached,@,}' 2> /dev/null)"
 # custom preview formatting
 regex_home=$(echo "$HOME" | sed "s / . g")
 Frmt="#I#{?window_active,*,#{?window_last_flag,-, }} (#{window_panes})#W  #{s/^$regex_home/~/r:pane_current_path}"
-fzf_preview="echo {} | sed 's/@$//' | xargs --no-run-if-empty tmux list-windows -F '$Frmt' -t"
+fzf_preview="echo {} | sed 's/@$//' | xargs -r tmux list-windows -F '$Frmt' -t"
 # custom $TERM to support tmux + vim + italics
 if [[ -n $CUST_TMUX_TERM ]]; then
     ENV_TERM="env TERM=$CUST_TMUX_TERM"
