@@ -29,9 +29,10 @@ selector=$(echo "$sessions" |
 
 # logic to determine script behavior
 [[ -z $selector ]] && echo "selection cancelled." && exit
-if [[ $(echo "$selector" | wc -l) = 2 ]]; then
-    # attach to existing session
-    target=$( echo "$selector" | sed -n 2p )
+if [[ $(printf '%s\n' "$selector" | wc -l) -eq 2 ]]; then
+    target="$(printf '%s\n' "$selector" | tail -n1)"
+
+    # attach to an existing session
     printf "$  %s\n" "tmux attach -t $target"
 
     if [[ -z $TMUX ]]; then
