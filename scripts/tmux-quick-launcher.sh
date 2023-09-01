@@ -9,7 +9,7 @@ sessions="$(tmux ls -F '#S#{?session_attached,@,}' 2> /dev/null)"
 [[ -z $sessions ]] && echo "no sessions."
 
 # custom preview formatting
-regex_home=$(echo "$HOME" | sed "s / . g")
+regex_home="${HOME//\//.}"      # replace forward slash '.'
 Frmt="#I#{?window_active,*,#{?window_last_flag,-, }} (#{window_panes})#W  #{s/^$regex_home/~/r:pane_current_path}"
 fzf_preview="echo {} | sed 's/@$//' | xargs -r tmux list-windows -F '$Frmt' -t"
 # custom $TERM to support tmux + vim + italics
@@ -42,7 +42,7 @@ if [[ $(printf '%s\n' "$selector" | wc -l) -eq 2 ]]; then
     fi
 else
     # create new session
-    target=$( echo "$selector" | sed "s|*$||" )
+    target="$selector"
     [[ -z $target ]] && echo "selection cancelled!" && exit
     printf "$  %s\n" "tmux new-session -s ${target}"
     if [[ -z $TMUX ]]; then
