@@ -1,5 +1,7 @@
 ## Tmux Configuration
 
+![tmux screenshot](./screenshot.png)\
+
 Contains configuration and supporting scripts for `tmux`. Tested and working on 
 MacOSX and Linux with Tmux v3.1+
 
@@ -9,10 +11,7 @@ MacOSX and Linux with Tmux v3.1+
 
 - `tmux`
 - `git`
-- `gawk` for tmux-fingers
-
-These commands will install this tmux configuration and the necessary [plugins][tpm] 
-at `~/.config/tmux/`.
+- `gawk` (for [tmux-fingers][fingers])
 
 ```bash
 git clone https://github.com/gikeymarcia/tmux-config.git ~/.config/tmux
@@ -21,6 +20,11 @@ git clone https://github.com/gikeymarcia/tmux-config.git ~/.config/tmux
 # highly recommended add to your .bashrc/.zshrc
 alias t=~/.config/tmux/scripts/tmux-quick-launcher.sh
 ```
+
+The above installs this tmux config ([plugins][tpm] included!) at
+`~/.config/tmux/`. If a config is found at '~/.tmux.conf' it is moved to
+'~/.tmux.conf.bak'.
+
 
 ### Features
 
@@ -34,7 +38,7 @@ alias t=~/.config/tmux/scripts/tmux-quick-launcher.sh
 - `tmux-quick-launcher.sh` to easily change/create sessions (requires `fzf`)
 - Prefix `F` for quick select [tmux-fingers][fingers]
 - Prefix `<C-s>` to save your session
-- Prefix `<C-r>` to save your session
+- Prefix `<C-r>` to reload your session
 
 [tpm]: <https://github.com/tmux-plugins/tpm>
 "TPM: The Tmux Plugin Manager"
