@@ -1,6 +1,6 @@
 ## Tmux Configuration
 
-![][screenshot]\
+![][screenshot]
 
 Configuration and scripts for `tmux` v3.1+ on Linux and MacOSX.
 
@@ -13,10 +13,11 @@ Configuration and scripts for `tmux` v3.1+ on Linux and MacOSX.
 - New splits & windows created with Prefix + `c % "` are at current working directory
     - Prefix alt-`c % "` to use default pane opening rules
 - Copy mode uses vim keys
-- `tmux-quick-launcher.sh` to easily change/create sessions (requires `fzf`)
+- `tmux-quick-launcher.sh` to easily change/create sessions
 - Prefix `F` for quick select [tmux-fingers][fingers]
 - Prefix `<C-s>` to save your session
 - Prefix `<C-r>` to reload your session
+- Prefix `p` to toggle synchronized panes (multi-type)
 
 ## Installation
 
@@ -36,6 +37,7 @@ The tmux-kickstart.sh script installs this config and [plugins][tpm] to
 - `tmux`
 - `git`
 - `gawk` (for [tmux-fingers][fingers])
+- `fzf` (for tmux-quick-launcher.sh)
 
 ### Recommended
 
@@ -43,8 +45,6 @@ The tmux-kickstart.sh script installs this config and [plugins][tpm] to
 # add this alias to your .bashrc/.zshrc
 alias t=~/.config/tmux/scripts/tmux-quick-launcher.sh
 ```
-
-
 
 [tpm]: <https://github.com/tmux-plugins/tpm>
 "TPM: The Tmux Plugin Manager"
