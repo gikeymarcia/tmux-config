@@ -2,7 +2,6 @@
 # Mikey Garcia, @gikeymarcia
 # fzf selector to attach-to/create tmux sessions
 # dependencies: fzf tmux
-# environment: $CUST_TMUX_TERM
 # https://www.arp242.net/tmux.html
 
 sessions="$(tmux ls -F '#S#{?session_attached,@,}' 2> /dev/null)"
@@ -13,11 +12,6 @@ regex_home="${HOME//\//.}"      # replace forward slash '.'
 Frmt="#I#{?window_active,*,#{?window_last_flag,-, }} (#{window_panes})#W  #{s/^$regex_home/~/r:pane_current_path}"
 fzf_preview="echo {} | sed 's/@$//' | xargs -r tmux list-windows -F '$Frmt' -t"
 # custom $TERM to support tmux + vim + italics
-if [[ -n $CUST_TMUX_TERM ]]; then
-    ENV_TERM="env TERM=$CUST_TMUX_TERM"
-else
-    ENV_TERM=""
-fi
 
 # choose your tmux session
 selector=$(echo "$sessions" |
@@ -36,9 +30,9 @@ if [[ $(printf '%s\n' "$selector" | wc -l) -eq 2 ]]; then
     printf "$  %s\n" "tmux attach -t $target"
 
     if [[ -z $TMUX ]]; then
-        $ENV_TERM tmux attach -t "$target"
+        tmux attach -t "$target"
     else
-        $ENV_TERM tmux switch-client -t "$target"
+        tmux switch-client -t "$target"
     fi
 else
     # create new session
@@ -46,9 +40,9 @@ else
     [[ -z $target ]] && echo "selection cancelled!" && exit
     printf "$  %s\n" "tmux new-session -s ${target}"
     if [[ -z $TMUX ]]; then
-        $ENV_TERM tmux new-session -s "${target}"
+        tmux new-session -s "${target}"
     else
-        $ENV_TERM tmux new-session -d -s "${target}"
-        $ENV_TERM tmux switch-client -t "${target}"
+        tmux new-session -d -s "${target}"
+        tmux switch-client -t "${target}"
     fi
 fi
