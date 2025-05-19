@@ -1,2 +1,4 @@
 Session.vim
 plugins/
+tmux_resurrect_*
+last

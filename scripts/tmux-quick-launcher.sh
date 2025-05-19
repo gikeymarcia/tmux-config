@@ -17,7 +17,8 @@ fzf_preview="echo {} | sed 's/@$//' | xargs -r tmux list-windows -F '$Frmt' -t"
 selector=$(echo "$sessions" |
     fzf --no-multi -i --reverse --print-query \
     --border --height=75% --inline-info --margin 5%,5%,5%,0% \
-    --prompt="Which tmux session? " \
+    --prompt="Session name: " --preview-label="Windows" \
+    --border --border-label="Tmux Quick Session Selector" \
     --preview="$fzf_preview" |
     sed 's|@$||')
 
