@@ -14,10 +14,11 @@ Configuration and scripts for `tmux` v3.1+ on Linux and MacOSX.
     - Prefix alt-`c % "` to use default pane opening rules
 - Copy mode uses vim keys
 - `tmux-quick-launcher.sh` to easily change/create sessions
-- Prefix `F` for quick select [tmux-fingers][fingers]
 - Prefix `<C-s>` to save your session
 - Prefix `<C-r>` to reload your session
 - Prefix `p` to toggle synchronized panes (multi-type)
+- Prefix `C-t` switch sessions using sesh
+- Prefix `C-o` switch to previous session
 
 ## Installation
 
@@ -36,8 +37,8 @@ The tmux-kickstart.sh script installs this config and [plugins][tpm] to
 
 - `tmux`
 - `git`
-- `gawk` (for [tmux-fingers][fingers])
 - `fzf` (for tmux-quick-launcher.sh)
+- [`sesh`](https://github.com/joshmedeski/sesh) (for session switching Prefix C-t)
 
 ### Recommended
 
@@ -48,7 +49,5 @@ alias t=~/.config/tmux/scripts/tmux-quick-launcher.sh
 
 [tpm]: <https://github.com/tmux-plugins/tpm>
 "TPM: The Tmux Plugin Manager"
-[fingers]: <https://github.com/Morantron/tmux-fingers>
-"Tmux Fingers"
 [screenshot]: <./screenshot.png>
 "Upper left: Session [pane#] PaneName  ------ Upper Right: Panes, Time"
